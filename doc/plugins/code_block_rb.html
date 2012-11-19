@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>File: code_block.rb [RDoc Documentation]</title>
+
+  <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet" />
+
+  <script src="../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file file-popup">
+  <div id="metadata">
+    <dl>
+      <dt class="modified-date">Last Modified</dt>
+      <dd class="modified-date">2012-11-18 18:15:54 -0800</dd>
+
+      
+      <dt class="requires">Requires</dt>
+      <dd class="requires">
+        <ul>
+        
+          <li>./plugins/pygments_code</li>
+        
+          <li>./plugins/raw</li>
+        
+        </ul>
+      </dd>
+      
+
+      
+    </dl>
+  </div>
+
+  <div id="documentation">
+    
+    <div class="description">
+      <h2>Description</h2>
+      
+<p>Title: Simple Code Blocks for <a href="../Jekyll.html">Jekyll</a> Author:
+Brandon Mathis <a href="http://brandonmathis.com">brandonmathis.com</a>
+Description: Write codeblocks with semantic HTML5 &lt;figure&gt; and
+&lt;figcaption&gt; elements and optional syntax highlighting — all with a
+simple, intuitive interface.</p>
+
+<p>Syntax: {% codeblock [title] [url] [link text] %} code snippet {%
+endcodeblock %}</p>
+
+<p>For syntax highlighting, put a file extension somewhere in the title.
+examples: {% codeblock file.sh %} code snippet {% endcodeblock %}</p>
+
+<p>{% codeblock Time to be Awesome! (awesome.rb) %} code snippet {%
+endcodeblock %}</p>
+
+<p>Example:</p>
+
+<p>{% codeblock Got pain? painreleif.sh <a
+href="http://site.com/painreleief.sh">site.com/painreleief.sh</a> Download
+it! %} $ rm -rf ~/PAIN {% endcodeblock %}</p>
+
+<p>Output:</p>
+
+<p>&lt;figure class=‘code’&gt; &lt;figcaption&gt;&lt;span&gt;Got pain?
+painrelief.sh&lt;/span&gt; &lt;a href=“<a
+href="http://site.com/painrelief.sh">Download”>site.com/painrelief.sh“>Download</a>
+it!&lt;/a&gt; &lt;div class=”highlight“&gt;&lt;pre&gt;&lt;code
+class=”sh“&gt; – nicely escaped highlighted code –
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;/figure&gt;</p>
+
+<p>Example 2 (no syntax highlighting):</p>
+
+<p>{% codeblock %} &lt;sarcasm&gt;Ooooh, sarcasm… How
+original!&lt;/sarcasm&gt; {% endcodeblock %}</p>
+
+<p>&lt;figure class=‘code’&gt; &lt;pre&gt;<tt>&amp;lt;sarcasm&gt; Ooooh,
+sarcasm... How original!&amp;lt;/sarcasm&gt;</tt>&lt;/pre&gt;
+&lt;/figure&gt;</p>
+
+    </div>
+    
+  </div>
+</body>
+</html>
+

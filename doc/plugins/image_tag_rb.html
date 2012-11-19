@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>File: image_tag.rb [RDoc Documentation]</title>
+
+  <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet" />
+
+  <script src="../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file file-popup">
+  <div id="metadata">
+    <dl>
+      <dt class="modified-date">Last Modified</dt>
+      <dd class="modified-date">2012-11-18 18:15:54 -0800</dd>
+
+      
+      <dt class="requires">Requires</dt>
+      <dd class="requires">
+        <ul>
+        
+        </ul>
+      </dd>
+      
+
+      
+    </dl>
+  </div>
+
+  <div id="documentation">
+    
+    <div class="description">
+      <h2>Description</h2>
+      
+<p>Title: Simple Image tag for <a href="../Jekyll.html">Jekyll</a> Authors:
+Brandon Mathis <a href="http://brandonmathis.com">brandonmathis.com</a></p>
+
+<pre>Felix Schäfer, Frederic Hemberger</pre>
+
+<p>Description: Easily output images with optional class names, width, height,
+title and alt attributes</p>
+
+<p>Syntax {% img [class name(s)] [<a href="http://s">http</a>:/]/path/to/image
+[width [height]] [title text | “title text” [“alt text”]] %}</p>
+
+<p>Examples: {% img /images/ninja.png Ninja Attack! %} {% img left half <img
+src="http://site.com/images/ninja.png" /> Ninja Attack! %} {% img left half
+<img src="http://site.com/images/ninja.png" /> 150 150 “Ninja Attack!”
+“Ninja in attack posture” %}</p>
+
+<p>Output: &lt;img src=“/images/ninja.png”&gt; &lt;img class=“left half”
+src=“<img src="http://site.com/images/ninja.png" />” title=“Ninja Attack!”
+alt=“Ninja Attack!”&gt; &lt;img class=“left half” src=“<img
+src="http://site.com/images/ninja.png" />” width=“150” height=“150”
+title=“Ninja Attack!” alt=“Ninja in attack posture”&gt;</p>
+
+    </div>
+    
+  </div>
+</body>
+</html>
+

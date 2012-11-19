@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>File: Rakefile [RDoc Documentation]</title>
+
+  <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+  <script src="./js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file">
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="./Gemfile.html">Gemfile</a></li>
+        
+          <li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./Jekyll.html">Jekyll</a></li>
+        
+          <li><a href="./Jekyll/Blockquote.html">Jekyll::Blockquote</a></li>
+        
+          <li><a href="./Jekyll/CategoryFeed.html">Jekyll::CategoryFeed</a></li>
+        
+          <li><a href="./Jekyll/CategoryIndex.html">Jekyll::CategoryIndex</a></li>
+        
+          <li><a href="./Jekyll/CodeBlock.html">Jekyll::CodeBlock</a></li>
+        
+          <li><a href="./Jekyll/ContentFilters.html">Jekyll::ContentFilters</a></li>
+        
+          <li><a href="./Jekyll/Convertible.html">Jekyll::Convertible</a></li>
+        
+          <li><a href="./Jekyll/Filters.html">Jekyll::Filters</a></li>
+        
+          <li><a href="./Jekyll/GenerateCategories.html">Jekyll::GenerateCategories</a></li>
+        
+          <li><a href="./Jekyll/GistTag.html">Jekyll::GistTag</a></li>
+        
+          <li><a href="./Jekyll/GistTagNoCache.html">Jekyll::GistTagNoCache</a></li>
+        
+          <li><a href="./Jekyll/HamlConverter.html">Jekyll::HamlConverter</a></li>
+        
+          <li><a href="./Jekyll/ImageTag.html">Jekyll::ImageTag</a></li>
+        
+          <li><a href="./Jekyll/IncludeArrayTag.html">Jekyll::IncludeArrayTag</a></li>
+        
+          <li><a href="./Jekyll/IncludeCodeTag.html">Jekyll::IncludeCodeTag</a></li>
+        
+          <li><a href="./Jekyll/JsFiddle.html">Jekyll::JsFiddle</a></li>
+        
+          <li><a href="./Jekyll/Layout.html">Jekyll::Layout</a></li>
+        
+          <li><a href="./Jekyll/Page.html">Jekyll::Page</a></li>
+        
+          <li><a href="./Jekyll/Pager.html">Jekyll::Pager</a></li>
+        
+          <li><a href="./Jekyll/Pagination.html">Jekyll::Pagination</a></li>
+        
+          <li><a href="./Jekyll/Post.html">Jekyll::Post</a></li>
+        
+          <li><a href="./Jekyll/PostFilter.html">Jekyll::PostFilter</a></li>
+        
+          <li><a href="./Jekyll/PullquoteTag.html">Jekyll::PullquoteTag</a></li>
+        
+          <li><a href="./Jekyll/RawTag.html">Jekyll::RawTag</a></li>
+        
+          <li><a href="./Jekyll/RenderPartialTag.html">Jekyll::RenderPartialTag</a></li>
+        
+          <li><a href="./Jekyll/Site.html">Jekyll::Site</a></li>
+        
+          <li><a href="./Jekyll/SitemapFile.html">Jekyll::SitemapFile</a></li>
+        
+          <li><a href="./Jekyll/SitemapGenerator.html">Jekyll::SitemapGenerator</a></li>
+        
+          <li><a href="./Jekyll/VideoTag.html">Jekyll::VideoTag</a></li>
+        
+          <li><a href="./Octopress.html">Octopress</a></li>
+        
+          <li><a href="./Octopress/Date.html">Octopress::Date</a></li>
+        
+          <li><a href="./BacktickCodeBlock.html">BacktickCodeBlock</a></li>
+        
+          <li><a href="./HighlightCode.html">HighlightCode</a></li>
+        
+          <li><a href="./Object.html">Object</a></li>
+        
+          <li><a href="./OctopressFilters.html">OctopressFilters</a></li>
+        
+          <li><a href="./OctopressLiquidFilters.html">OctopressLiquidFilters</a></li>
+        
+          <li><a href="./RubyPants.html">RubyPants</a></li>
+        
+          <li><a href="./String.html">String</a></li>
+        
+          <li><a href="./TemplateWrapper.html">TemplateWrapper</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    
+<p>require “rubygems” require “bundler/setup” require “stringex”</p>
+
+<p>## – Rsync Deploy config – ## # Be sure your public key is listed in your
+server’s ~/.ssh/authorized_keys file ssh_user       = “user@domain.com”
+ssh_port       = “22” document_root  = “~/website.com/” rsync_delete   =
+false deploy_default = “rsync”</p>
+
+<p># This will be configured for you when you run config_deploy deploy_branch 
+= “gh-pages”</p>
+
+<p>## – Misc Configs – ##</p>
+
+<p>public_dir      = “public”    # compiled site directory source_dir      =
+“source”    # source file directory blog_index_dir  = ‘source’    #
+directory for your blog’s index page (if you put your index in
+source/blog/index.html, set this to ‘source/blog’) deploy_dir      =
+“_deploy”   # deploy directory (for Github pages deployment) stash_dir     
+= “_stash”    # directory to stash posts for speedy generation posts_dir   
+= “_posts”    # directory for blog files themes_dir      = “.themes”   #
+directory for blog files new_post_ext    = “markdown”  # default new post
+file extension when using the new_post task new_page_ext    = “markdown”  #
+default new page file extension when using the new_page task server_port   
+= “4000”      # port for preview server eg. localhost:4000</p>
+
+<p>desc “Initial setup for Octopress: copies the default theme into the path
+of Jekyll’s generator. Rake install defaults to rake <a
+href="http://classic">install</a> to install a different theme run rake <a
+href="http://some_theme_name">install</a>” task :install, :theme do |t,
+args|</p>
+
+<pre>if File.directory?(source_dir) || File.directory?(&quot;sass&quot;)
+  abort(&quot;rake aborted!&quot;) if ask(&quot;A theme is already installed, proceeding will overwrite existing files. Are you sure?&quot;, ['y', 'n']) == 'n'
+end
+# copy theme into working Jekyll directories
+theme = args.theme || 'classic'
+puts &quot;## Copying &quot;+theme+&quot; theme into ./#{source_dir} and ./sass&quot;
+mkdir_p source_dir
+cp_r &quot;#{themes_dir}/#{theme}/source/.&quot;, source_dir
+mkdir_p &quot;sass&quot;
+cp_r &quot;#{themes_dir}/#{theme}/sass/.&quot;, &quot;sass&quot;
+mkdir_p &quot;#{source_dir}/#{posts_dir}&quot;
+mkdir_p public_dir</pre>
+
+<p>end</p>
+
+<p>####################### # Working with <a href="Jekyll.html">Jekyll</a> #
+#######################</p>
+
+<p>desc “Generate jekyll site” task :generate do</p>
+
+<pre>raise &quot;### You haven't set anything up yet. First run `rake install` to set up an Octopress theme.&quot; unless File.directory?(source_dir)
+puts &quot;## Generating Site with Jekyll&quot;
+system &quot;compass compile --css-dir #{source_dir}/stylesheets&quot;
+system &quot;jekyll&quot;</pre>
+
+<p>end</p>
+
+<p>desc “Watch the site and regenerate when it changes” task :watch do</p>
+
+<pre>raise &quot;### You haven't set anything up yet. First run `rake install` to set up an Octopress theme.&quot; unless File.directory?(source_dir)
+puts &quot;Starting to watch source with Jekyll and Compass.&quot;
+system &quot;compass compile --css-dir #{source_dir}/stylesheets&quot; unless File.exist?(&quot;#{source_dir}/stylesheets/screen.css&quot;)
+jekyllPid = Process.spawn({&quot;OCTOPRESS_ENV&quot;=&gt;&quot;preview&quot;}, &quot;jekyll --auto&quot;)
+compassPid = Process.spawn(&quot;compass watch&quot;)
+
+trap(&quot;INT&quot;) {
+  [jekyllPid, compassPid].each { |pid| Process.kill(9, pid) rescue Errno::ESRCH }
+  exit 0
+}
+
+[jekyllPid, compassPid].each { |pid| Process.wait(pid) }</pre>
+
+<p>end</p>
+
+<p>desc “preview the site in a web browser” task :preview do</p>
+
+<pre>raise &quot;### You haven't set anything up yet. First run `rake install` to set up an Octopress theme.&quot; unless File.directory?(source_dir)
+puts &quot;Starting to watch source with Jekyll and Compass. Starting Rack on port #{server_port}&quot;
+system &quot;compass compile --css-dir #{source_dir}/stylesheets&quot; unless File.exist?(&quot;#{source_dir}/stylesheets/screen.css&quot;)
+jekyllPid = Process.spawn({&quot;OCTOPRESS_ENV&quot;=&gt;&quot;preview&quot;}, &quot;jekyll --auto&quot;)
+compassPid = Process.spawn(&quot;compass watch&quot;)
+rackupPid = Process.spawn(&quot;rackup --port #{server_port}&quot;)
+
+trap(&quot;INT&quot;) {
+  [jekyllPid, compassPid, rackupPid].each { |pid| Process.kill(9, pid) rescue Errno::ESRCH }
+  exit 0
+}
+
+[jekyllPid, compassPid, rackupPid].each { |pid| Process.wait(pid) }</pre>
+
+<p>end</p>
+
+<p># usage rake <a href="http://my-new-post">new_post</a> or rake new_post[‘my
+new post’] or rake new_post (defaults to “new-post”) desc “Begin a new post
+in #{source_dir}/#{posts_dir}” task :new_post, :title do |t, args|</p>
+
+<pre>raise &quot;### You haven't set anything up yet. First run `rake install` to set up an Octopress theme.&quot; unless File.directory?(source_dir)
+mkdir_p &quot;#{source_dir}/#{posts_dir}&quot;
+args.with_defaults(:title =&gt; 'new-post')
+title = args.title
+filename = &quot;#{source_dir}/#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}.#{new_post_ext}&quot;
+if File.exist?(filename)
+  abort(&quot;rake aborted!&quot;) if ask(&quot;#{filename} already exists. Do you want to overwrite?&quot;, ['y', 'n']) == 'n'
+end
+puts &quot;Creating new post: #{filename}&quot;
+open(filename, 'w') do |post|
+  post.puts &quot;---&quot;
+  post.puts &quot;layout: post&quot;
+  post.puts &quot;title: \&quot;#{title.gsub(/&amp;/,'&amp;amp;')}\&quot;&quot;
+  post.puts &quot;date: #{Time.now.strftime('%Y-%m-%d %H:%M')}&quot;
+  post.puts &quot;comments: true&quot;
+  post.puts &quot;categories: &quot;
+  post.puts &quot;---&quot;
+end</pre>
+
+<p>end</p>
+
+<p># usage rake <a href="http://my-new-page">new_page</a> or rake <a
+href="http://my-new-page.html">new_page</a> or rake new_page (defaults to
+“new-page.markdown”) desc “Create a new page in
+#{source_dir}/(filename)/index.#{new_page_ext}” task :new_page, :filename
+do |t, args|</p>
+
+<pre>raise &quot;### You haven't set anything up yet. First run `rake install` to set up an Octopress theme.&quot; unless File.directory?(source_dir)
+args.with_defaults(:filename =&gt; 'new-page')
+page_dir = [source_dir]
+if args.filename.downcase =~ /(^.+\/)?(.+)/
+  filename, dot, extension = $2.rpartition('.').reject(&amp;:empty?)         # Get filename and extension
+  title = filename
+  page_dir.concat($1.downcase.sub(/^\//, '').split('/')) unless $1.nil?  # Add path to page_dir Array
+  if extension.nil?
+    page_dir &lt;&lt; filename
+    filename = &quot;index&quot;
+  end
+  extension ||= new_page_ext
+  page_dir = page_dir.map! { |d| d = d.to_url }.join('/')                # Sanitize path
+  filename = filename.downcase.to_url
+
+  mkdir_p page_dir
+  file = &quot;#{page_dir}/#{filename}.#{extension}&quot;
+  if File.exist?(file)
+    abort(&quot;rake aborted!&quot;) if ask(&quot;#{file} already exists. Do you want to overwrite?&quot;, ['y', 'n']) == 'n'
+  end
+  puts &quot;Creating new page: #{file}&quot;
+  open(file, 'w') do |page|
+    page.puts &quot;---&quot;
+    page.puts &quot;layout: page&quot;
+    page.puts &quot;title: \&quot;#{title}\&quot;&quot;
+    page.puts &quot;date: #{Time.now.strftime('%Y-%m-%d %H:%M')}&quot;
+    page.puts &quot;comments: true&quot;
+    page.puts &quot;sharing: true&quot;
+    page.puts &quot;footer: true&quot;
+    page.puts &quot;---&quot;
+  end
+else
+  puts &quot;Syntax error: #{args.filename} contains unsupported characters&quot;
+end</pre>
+
+<p>end</p>
+
+<p># usage rake <a href="http://my-post">isolate</a> desc “Move all other
+posts than the one currently being worked on to a temporary stash location
+(stash) so regenerating the site happens much quicker.” task :isolate,
+:filename do |t, args|</p>
+
+<pre>stash_dir = &quot;#{source_dir}/#{stash_dir}&quot;
+FileUtils.mkdir(stash_dir) unless File.exist?(stash_dir)
+Dir.glob(&quot;#{source_dir}/#{posts_dir}/*.*&quot;) do |post|
+  FileUtils.mv post, stash_dir unless post.include?(args.filename)
+end</pre>
+
+<p>end</p>
+
+<p>desc “Move all stashed posts back into the posts directory, ready for site
+generation.” task :integrate do</p>
+
+<pre>FileUtils.mv Dir.glob(&quot;#{source_dir}/#{stash_dir}/*.*&quot;), &quot;#{source_dir}/#{posts_dir}/&quot;</pre>
+
+<p>end</p>
+
+<p>desc “Clean out caches: .pygments-cache, .gist-cache, .sass-cache” task
+:clean do</p>
+
+<pre>rm_rf [&quot;.pygments-cache/**&quot;, &quot;.gist-cache/**&quot;, &quot;.sass-cache/**&quot;, &quot;source/stylesheets/screen.css&quot;]</pre>
+
+<p>end</p>
+
+<p>desc “Move sass to sass.old, install sass theme updates, replace
+sass/custom with sass.old/custom” task :update_style, :theme do |t, args|</p>
+
+<pre>theme = args.theme || 'classic'
+if File.directory?(&quot;sass.old&quot;)
+  puts &quot;removed existing sass.old directory&quot;
+  rm_r &quot;sass.old&quot;, :secure=&gt;true
+end
+mv &quot;sass&quot;, &quot;sass.old&quot;
+puts &quot;## Moved styles into sass.old/&quot;
+cp_r &quot;#{themes_dir}/&quot;+theme+&quot;/sass/&quot;, &quot;sass&quot;
+cp_r &quot;sass.old/custom/.&quot;, &quot;sass/custom&quot;
+puts &quot;## Updated Sass ##&quot;</pre>
+
+<p>end</p>
+
+<p>desc “Move source to source.old, install source theme updates, replace
+source/_includes/navigation.html with source.old’s navigation” task
+:update_source, :theme do |t, args|</p>
+
+<pre>theme = args.theme || 'classic'
+if File.directory?(&quot;#{source_dir}.old&quot;)
+  puts &quot;## Removed existing #{source_dir}.old directory&quot;
+  rm_r &quot;#{source_dir}.old&quot;, :secure=&gt;true
+end
+mkdir &quot;#{source_dir}.old&quot;
+cp_r &quot;#{source_dir}/.&quot;, &quot;#{source_dir}.old&quot;
+puts &quot;## Copied #{source_dir} into #{source_dir}.old/&quot;
+cp_r &quot;#{themes_dir}/&quot;+theme+&quot;/source/.&quot;, source_dir, :remove_destination=&gt;true
+cp_r &quot;#{source_dir}.old/_includes/custom/.&quot;, &quot;#{source_dir}/_includes/custom/&quot;, :remove_destination=&gt;true
+cp &quot;#{source_dir}.old/favicon.png&quot;, source_dir
+mv &quot;#{source_dir}/index.html&quot;, &quot;#{blog_index_dir}&quot;, :force=&gt;true if blog_index_dir != source_dir
+cp &quot;#{source_dir}.old/index.html&quot;, source_dir if blog_index_dir != source_dir &amp;&amp; File.exists?(&quot;#{source_dir}.old/index.html&quot;)
+puts &quot;## Updated #{source_dir} ##&quot;</pre>
+
+<p>end</p>
+
+<p>############## # Deploying  # ##############</p>
+
+<p>desc “Default deploy task” task :deploy do</p>
+
+<pre># Check if preview posts exist, which should not be published
+if File.exists?(&quot;.preview-mode&quot;)
+  puts &quot;## Found posts in preview mode, regenerating files ...&quot;
+  File.delete(&quot;.preview-mode&quot;)
+  Rake::Task[:generate].execute
+end
+
+Rake::Task[:copydot].invoke(source_dir, public_dir)
+Rake::Task[&quot;#{deploy_default}&quot;].execute</pre>
+
+<p>end</p>
+
+<p>desc “Generate website and deploy” task :gen_deploy =&gt; [:integrate,
+:generate, :deploy] do end</p>
+
+<p>desc “copy dot files for deployment” task :copydot, :source, :dest do |t,
+args|</p>
+
+<pre>FileList[&quot;#{args.source}/**/.*&quot;].exclude(&quot;**/.&quot;, &quot;**/..&quot;, &quot;**/.DS_Store&quot;, &quot;**/._*&quot;).each do |file|
+  cp_r file, file.gsub(/#{args.source}/, &quot;#{args.dest}&quot;) unless File.directory?(file)
+end</pre>
+
+<p>end</p>
+
+<p>desc “Deploy website via rsync” task :rsync do</p>
+
+<pre>exclude = &quot;&quot;
+if File.exists?('./rsync-exclude')
+  exclude = &quot;--exclude-from '#{File.expand_path('./rsync-exclude')}'&quot;
+end
+puts &quot;## Deploying website via Rsync&quot;
+ok_failed system(&quot;rsync -avze 'ssh -p #{ssh_port}' #{exclude} #{&quot;--delete&quot; unless rsync_delete == false} #{public_dir}/ #{ssh_user}:#{document_root}&quot;)</pre>
+
+<p>end</p>
+
+<p>desc “deploy public directory to github pages” multitask :push do</p>
+
+<pre>puts &quot;## Deploying branch to Github Pages &quot;
+(Dir[&quot;#{deploy_dir}/*&quot;]).each { |f| rm_rf(f) }
+Rake::Task[:copydot].invoke(public_dir, deploy_dir)
+puts &quot;\n## copying #{public_dir} to #{deploy_dir}&quot;
+cp_r &quot;#{public_dir}/.&quot;, deploy_dir
+cd &quot;#{deploy_dir}&quot; do
+  system &quot;git add .&quot;
+  system &quot;git add -u&quot;
+  puts &quot;\n## Commiting: Site updated at #{Time.now.utc}&quot;
+  message = &quot;Site updated at #{Time.now.utc}&quot;
+  system &quot;git commit -m \&quot;#{message}\&quot;&quot;
+  puts &quot;\n## Pushing generated #{deploy_dir} website&quot;
+  system &quot;git push origin #{deploy_branch} --force&quot;
+  puts &quot;\n## Github Pages deploy complete&quot;
+end</pre>
+
+<p>end</p>
+
+<p>desc “Update configurations to support publishing to root or sub directory”
+task :set_root_dir, :dir do |t, args|</p>
+
+<pre>puts &quot;&gt;&gt;&gt; !! Please provide a directory, eg. rake config_dir[publishing/subdirectory]&quot; unless args.dir
+if args.dir
+  if args.dir == &quot;/&quot;
+    dir = &quot;&quot;
+  else
+    dir = &quot;/&quot; + args.dir.sub(/(\/*)(.+)/, &quot;\\2&quot;).sub(/\/$/, '');
+  end
+  rakefile = IO.read(__FILE__)
+  rakefile.sub!(/public_dir(\s*)=(\s*)([&quot;'])[\w\-\/]*[&quot;']/, &quot;public_dir\\1=\\2\\3public#{dir}\\3&quot;)
+  File.open(__FILE__, 'w') do |f|
+    f.write rakefile
+  end
+  compass_config = IO.read('config.rb')
+  compass_config.sub!(/http_path(\s*)=(\s*)([&quot;'])[\w\-\/]*[&quot;']/, &quot;http_path\\1=\\2\\3#{dir}/\\3&quot;)
+  compass_config.sub!(/http_images_path(\s*)=(\s*)([&quot;'])[\w\-\/]*[&quot;']/, &quot;http_images_path\\1=\\2\\3#{dir}/images\\3&quot;)
+  compass_config.sub!(/http_fonts_path(\s*)=(\s*)([&quot;'])[\w\-\/]*[&quot;']/, &quot;http_fonts_path\\1=\\2\\3#{dir}/fonts\\3&quot;)
+  compass_config.sub!(/css_dir(\s*)=(\s*)([&quot;'])[\w\-\/]*[&quot;']/, &quot;css_dir\\1=\\2\\3public#{dir}/stylesheets\\3&quot;)
+  File.open('config.rb', 'w') do |f|
+    f.write compass_config
+  end
+  jekyll_config = IO.read('_config.yml')
+  jekyll_config.sub!(/^destination:.+$/, &quot;destination: public#{dir}&quot;)
+  jekyll_config.sub!(/^subscribe_rss:\s*\/.+$/, &quot;subscribe_rss: #{dir}/atom.xml&quot;)
+  jekyll_config.sub!(/^root:.*$/, &quot;root: /#{dir.sub(/^\//, '')}&quot;)
+  File.open('_config.yml', 'w') do |f|
+    f.write jekyll_config
+  end
+  rm_rf public_dir
+  mkdir_p &quot;#{public_dir}#{dir}&quot;
+  puts &quot;## Site's root directory is now '/#{dir.sub(/^\//, '')}' ##&quot;
+end</pre>
+
+<p>end</p>
+
+<p>desc “Set up _deploy folder and deploy branch for Github Pages deployment”
+task :setup_github_pages, :repo do |t, args|</p>
+
+<pre>if args.repo
+  repo_url = args.repo
+else
+  puts &quot;Enter the read/write url for your repository&quot; 
+  puts &quot;(For example, 'git@github.com:your_username/your_username.github.com)&quot;
+  repo_url = get_stdin(&quot;Repository url: &quot;)
+end
+user = repo_url.match(/:([^\/]+)/)[1]
+branch = (repo_url.match(/\/[\w-]+.github.com/).nil?) ? 'gh-pages' : 'master'
+project = (branch == 'gh-pages') ? repo_url.match(/\/([^\.]+)/)[1] : ''
+unless `git remote -v`.match(/origin.+?octopress.git/).nil?
+  # If octopress is still the origin remote (from cloning) rename it to octopress
+  system &quot;git remote rename origin octopress&quot;
+  if branch == 'master'
+    # If this is a user/organization pages repository, add the correct origin remote
+    # and checkout the source branch for committing changes to the blog source.
+    system &quot;git remote add origin #{repo_url}&quot;
+    puts &quot;Added remote #{repo_url} as origin&quot;
+    system &quot;git config branch.master.remote origin&quot;
+    puts &quot;Set origin as default remote&quot;
+    system &quot;git branch -m master source&quot;
+    puts &quot;Master branch renamed to 'source' for committing your blog source files&quot;
+  else
+    unless !public_dir.match(&quot;#{project}&quot;).nil?
+      system &quot;rake set_root_dir[#{project}]&quot;
+    end
+  end
+end
+url = &quot;http://#{user}.github.com&quot;
+url += &quot;/#{project}&quot; unless project == ''
+jekyll_config = IO.read('_config.yml')
+jekyll_config.sub!(/^url:.*$/, &quot;url: #{url}&quot;)
+File.open('_config.yml', 'w') do |f|
+  f.write jekyll_config
+end
+rm_rf deploy_dir
+mkdir deploy_dir
+cd &quot;#{deploy_dir}&quot; do
+  system &quot;git init&quot;
+  system &quot;echo 'My Octopress Page is coming soon &amp;hellip;' &gt; index.html&quot;
+  system &quot;git add .&quot;
+  system &quot;git commit -m \&quot;Octopress init\&quot;&quot;
+  system &quot;git branch -m gh-pages&quot; unless branch == 'master'
+  system &quot;git remote add origin #{repo_url}&quot;
+  rakefile = IO.read(__FILE__)
+  rakefile.sub!(/deploy_branch(\s*)=(\s*)([&quot;'])[\w-]*[&quot;']/, &quot;deploy_branch\\1=\\2\\3#{branch}\\3&quot;)
+  rakefile.sub!(/deploy_default(\s*)=(\s*)([&quot;'])[\w-]*[&quot;']/, &quot;deploy_default\\1=\\2\\3push\\3&quot;)
+  File.open(__FILE__, 'w') do |f|
+    f.write rakefile
+  end
+end
+puts &quot;\n---\n## Now you can deploy to #{url} with `rake deploy` ##&quot;</pre>
+
+<p>end</p>
+
+<p>def ok_failed(condition)</p>
+
+<pre>if (condition)
+  puts &quot;OK&quot;
+else
+  puts &quot;FAILED&quot;
+end</pre>
+
+<p>end</p>
+
+<p>def get_stdin(message)</p>
+
+<pre>print message
+STDIN.gets.chomp</pre>
+
+<p>end</p>
+
+<p>def ask(message, valid_options)</p>
+
+<pre>if valid_options
+  answer = get_stdin(&quot;#{message} #{valid_options.to_s.gsub(/&quot;/, '').gsub(/, /,'/')} &quot;) while !valid_options.include?(answer)
+else
+  answer = get_stdin(message)
+end
+answer</pre>
+
+<p>end</p>
+
+<p>desc “list tasks” task :list do</p>
+
+<pre>puts &quot;Tasks: #{(Rake::Task.tasks - [Rake::Task[:list]]).join(', ')}&quot;
+puts &quot;(type rake -T for more detail)\n\n&quot;</pre>
+
+<p>end</p>
+
+  </div>
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+</body>
+</html>
+

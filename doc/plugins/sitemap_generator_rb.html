@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>File: sitemap_generator.rb [RDoc Documentation]</title>
+
+  <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet" />
+
+  <script src="../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file file-popup">
+  <div id="metadata">
+    <dl>
+      <dt class="modified-date">Last Modified</dt>
+      <dd class="modified-date">2012-11-18 18:15:54 -0800</dd>
+
+      
+      <dt class="requires">Requires</dt>
+      <dd class="requires">
+        <ul>
+        
+          <li>rexml/document</li>
+        
+          <li>fileutils</li>
+        
+        </ul>
+      </dd>
+      
+
+      
+    </dl>
+  </div>
+
+  <div id="documentation">
+    
+    <div class="description">
+      <h2>Description</h2>
+      
+<p>Sitemap.xml Generator is a <a href="../Jekyll.html">Jekyll</a> plugin that
+generates a sitemap.xml file by traversing all of the available posts and
+pages.</p>
+
+<p>How To Use:</p>
+
+<pre>1) Copy source file into your _plugins folder within your Jekyll project.
+2) Change modify the url variable in _config.yml to reflect your domain name.
+3) Run Jekyll: jekyll --server to re-generate your site.</pre>
+
+<p>Variables:</p>
+
+<pre>* Change SITEMAP_FILE_NAME if you want your sitemap to be called something
+  other than sitemap.xml.
+* Change the PAGES_INCLUDE_POSTS list to include any pages that are looping
+  through your posts (e.g. &quot;index.html&quot;, &quot;archive.html&quot;, etc.). This will
+  ensure that right after you make a new post, the last modified date will
+  be updated to reflect the new post.
+* A sitemap.xml should be included in your _site folder.
+* If there are any files you don't want included in the sitemap, add them
+  to the EXCLUDED_FILES list. The name should match the name of the source
+  file.
+* If you want to include the optional changefreq and priority attributes,
+  simply include custom variables in the YAML Front Matter of that file.
+  The names of these custom variables are defined below in the
+  CHANGE_FREQUENCY_CUSTOM_VARIABLE_NAME and PRIORITY_CUSTOM_VARIABLE_NAME
+  constants.</pre>
+
+<p>Notes:</p>
+
+<pre>* The last modified date is determined by the latest from the following:
+  system modified date of the page or post, system modified date of
+  included layout, system modified date of included layout within that
+  layout, ...</pre>
+
+<p>Author: Michael Levin Site: <a
+href="http://www.kinnetica.com">www.kinnetica.com</a> Distributed Under A
+Creative Commons License</p>
+
+<pre>- http://creativecommons.org/licenses/by/3.0/</pre>
+
+<p>Modified for <a href="../Octopress.html">Octopress</a> by John W. Long</p>
+
+    </div>
+    
+  </div>
+</body>
+</html>
+
