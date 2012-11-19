@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://paulmoore.github.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://paul-moore.ca
+title: "Paul's Blog"
+subtitle: "Mobile, web, and other technologies I now find myself working with."
+author: Paul Moore
 simple_search: http://google.com/search
 description:
 
@@ -58,8 +58,8 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.ht
 # ----------------------- #
 
 # Github repositories
-github_user:
-github_repo_count: 0
+github_user: paulmoore
+github_repo_count: 5
 github_show_profile_link: true
 github_skip_forks: true
 
@@ -72,12 +72,12 @@ twitter_show_follower_count: false
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: false
+google_plus_one: true
 google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user:
+googleplus_user: paul.andrewharrison.moore@gmail.com
 googleplus_hidden: false
 
 # Pinboard
