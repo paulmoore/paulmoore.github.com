@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Objective-C | Paul's Blog]]></title>
+  <link href="http://paul-moore.ca/blog/categories/objective-c/atom.xml" rel="self"/>
+  <link href="http://paul-moore.ca/"/>
+  <updated>2013-01-28T22:45:45-08:00</updated>
+  <id>http://paul-moore.ca/</id>
+  <author>
+    <name><![CDATA[Paul Moore]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Facebook profile pictures in cocos2d]]></title>
+    <link href="http://paul-moore.ca/blog/2013/01/28/facebook-profile-pictures-in-cocos2d/"/>
+    <updated>2013-01-28T19:32:00-08:00</updated>
+    <id>http://paul-moore.ca/blog/2013/01/28/facebook-profile-pictures-in-cocos2d</id>
+    <content type="html"><![CDATA[<h2>Facebook and UIKit</h2>
+
+<p>Somewhere along the line of developing Factor Friends (more on that later) I decided that I wanted, no, <em>needed</em> Facebook integration.<br/>
+Despite whether or not this was a necessary feature was trumped by my desire to play around with social networking APIs.<br/>
+If you haven't read through their tutorial yet, I strongly suggest you <a href="https://developers.facebook.%20%20com/docs/tutorials/ios-sdk-tutorial/">start here</a>.</p>
+
+<p>For the most part, integration with the Facebook API and cocos2d is straight forward.<br/>
+The data model is separated from any framework and the view controllers for login are dealt with for you.<br/>
+Where it becomes tricky is when you need to bridge the gap between cocos2d and UIKit, which is what the Facebook API is built on.</p>
+
+<p>The normal way one would construct a profile image from the API is as follows:</p>
+
+<p>```objective-c Making a profile picture in UIKit
+// Is the player logged into Facebook?  If so load their Facebook profile pic.
+if ([FBSession activeSession].isOpen) {</p>
+
+<pre><code>[[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection, NSDictionary&lt;FBGraphUser&gt; *user, NSError *error) {
+    if (!error) {
+        FBProfilePictureView *pic = [[FBProfilePictureView alloc] initWithProfileID:@"my_facebook_id" pictureCropping:FBProfilePictureCroppingSquare];
+        CGSize s = [CCDirector sharedDirector].winSize;
+        CGRect f = pic.frame;
+        // Center the profile picture in the screen.
+        f.origin = ccp(s.width / 2, s.height / 2);
+        pic.frame = f;
+        [[CCDirector sharedDirector].view addSubview:pic];
+    }
+}];
+</code></pre>
+
+<p>}
+```</p>
+
+<h2>cocos2d and UIViews</h2>
+
+<p>Cool!  With any luck, we have our Facebook profile picture sitting in the middle of the screen.<br/>
+In some cases, this might be enough.<br/>
+Where it started to break for me was when I needed profile pictures that <em>moved</em> with respect to the rest of my cocos2d scene, and behaved like normal <code>CCSprite</code>s.<br/>
+There are some situations where it is just flat out easier to deal with a <code>CCNode</code> subclass than to manipulate a <code>UIView</code>.<br/>
+In this case, an <code>FBProfilePictureView</code> would not cut it, since I needed access to the underlying data.<br/>
+After attempting to extract the underlying <code>UIImageView</code> and tamper with the CGImage:</p>
+
+<p>```objective-c Do not attempt
+FBProfilePictureView *pic = ...;
+for (id child in pic) {</p>
+
+<pre><code>if ([child isKindOfClass:[UIImageView class]]) {
+    // ref is nil.
+    CGImageRef ref = ((UIImageView *)child).image.CGImage;
+    // Will throw an error.
+    CCTexture2D *tex = [[CCTexture2D alloc] initWithCGImage:ref resolutionType:kCCResolutioniPhone];
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Needless to say, that did not work.<br/>
+Someone who has more experience than me might be able to figure it out, but I conceded defeat.<br/>
+I came to the conclusion that I would probably have to navigate away from the Facebook iOS framework and use their web API directly.</p>
+
+<h2>Facebook Graph API</h2>
+
+<p>Luckily for me, accessing profile pictures directly is rather easy.
+The full documentation for this can be found <a href="https://developers.facebook.com/docs/reference/api/using-pictures/">here</a>.
+To test it out, try navigating to:</p>
+
+<p><strong>https://graph.facebook.com/your_id/picture</strong></p>
+
+<p>where <strong>your_id</strong> is either your Facebook ID or your Facebook 'address'.
+For instance, you can view this ugly guy here:</p>
+
+<p><a href="https://graph.facebook.com/paul.andrewharrison.moore/picture">https://graph.facebook.com/paul.andrewharrison.moore/picture</a>
+<img class="center" src="https://graph.facebook.com/paul.andrewharrison.moore/picture" title="&#34;Me&#34;" alt="&#34;Me&#34;"></p>
+
+<p>We can also pass parameters to this URL to customize the properties of the image.
+For instance, we can adjust the width and height of the image:</p>
+
+<p><a href="https://graph.facebook.com/paul.andrewharrison.moore/picture?width=60&amp;height=120">https://graph.facebook.com/paul.andrewharrison.moore/picture?width=60&amp;height=120</a><br/>
+<img class="center" src="https://graph.facebook.com/paul.andrewharrison.moore/picture?width=60&amp;height=120" title="&#34;Me&#34;" alt="&#34;Me&#34;"></p>
+
+<p>Read the documentation for a full discussion on what other options are available.</p>
+
+<h2>Downloading remote images</h2>
+
+<p>Anyways, the issue now is how to download this picture and use it as a <code>CCSprite</code>.<br/>
+The general formula looks something like this:</p>
+
+<p>```objective-c Downloading a remote image in Objective-C
+NSString <em>facebookId = ...;
+int width = ...;
+int height = ...;
+NSString </em>https = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=%i&amp;height=%i", facebookId, width, height];
+NSURL <em>url = [NSURL URLWithString:https];
+NSAssert(url, @"URL is malformed: %@", https);
+NSError </em>error = nil;
+NSData *data = [NSData dataWithContentsOfURL:url options:0 error:&amp;error];
+if (data &amp;&amp; !error) {</p>
+
+<pre><code>// Download the image to the Cache directory of our App.
+NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[facebookId stringByAppendingString:@".jpg"]];
+[data writeToFile:path options:NSDataWritingAtomic error:&amp;error];
+if (!error) {
+    // It worked!
+} else {
+    // Error, Could not save downloaded file!
+}
+</code></pre>
+
+<p>} else {</p>
+
+<pre><code>// Error, Could not download file!
+</code></pre>
+
+<p>}
+```</p>
+
+<p>This will download our Facebook profile image to the Cache directory as a JPEG file with our Facebook ID as the name.<br/>
+To use this image as a <code>CCSprite</code>, we must first load the image into a <code>CCTexture2D</code> and create a sprite frame, like so:</p>
+
+<p><code>objective-c Using the Cached image as a CCSprite
+// 1. Load the texture in from the Cache directory.
+CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:path];
+// 2. Create the sprite frame with appropriate dimensions.
+CCSpriteFrame *frame = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(0, 0, width, height)];
+// 3. Golden.
+[CCSprite spriteWithSpriteFrame:frame];
+</code></p>
+
+<p>You may be thinking, cool, but this is tedious to do each time, and...</p>
+
+<ol>
+<li>This code runs synchronously, wouldn't my App block while waiting for the picture to download?</li>
+<li>If I've downloaded the image once, can't I just reload it next time from the cache?</li>
+<li>While the image is downloading, can I display a placeholder image?</li>
+<li>Can this functionality be wrapped in a <code>CCSprite</code> subclass?</li>
+</ol>
+
+
+<p>Yes you can!  I've done so myself, and you can find it in <a href="https://github.com/paulmoore/CCFBProfilePicture">this Github repository</a>.<br/>
+It's nothing spectacular, but it certainly gets the job done for my purposes.<br/>
+Here is an example of how to use it:</p>
+
+<p><code>objective-c Using the CCFBProfilePicture class
+CCFBProfilePicture *pic = [CCFBProfilePicture profilePictureWithId:fbid accessToken:accessToken contentSize:content cached:useCache placeholder:temp];
+[self addChild:pic];
+</code></p>
+
+<p>The class downloads the image in a background thread, so your App will not stall.<br/>
+It also (optionally) attempts to use cached versions of the image before querying Facebook.<br/>
+As well, you can specify a placeholder sprite frame which is displayed while the image is loading.</p>
+
+<p>The constructor requires these parameters:</p>
+
+<ul>
+<li><strong><code>fbid</code></strong> Your Facebook ID, e.g. <em>paul.andrewharrison.moore</em></li>
+<li><strong><code>accessToken</code></strong> (Optional) This is the Facebook access token you received when you signed in through your App.  Providing this argument reduces the chance your App will be rate limited (limit the amount of profile pictures you can access).</li>
+<li><strong><code>content</code></strong> The size, in points, to download the image at.  For instance, if you specify <code>CGSizeMake(100, 100)</code> and you are running on an iPhone 4, it will download an image 200x200 pixels big.  This will also be the <code>contentSize</code> property of the sprite.</li>
+<li><strong><code>useCache</code></strong> If set to YES, will attempt to use a cached version of the image before downloading a new one.  This is a recommended option unless you must always have an up-to-date image, or you need multiple resolutions of the image.</li>
+<li><strong><code>temp</code></strong> (Optional) This is the sprite frame that will be displayed while the image is loading.  It is recommended that it is the same content size as the downloaded image.</li>
+</ul>
+
+
+<p>And that is it!  Now you can run actions on the profile pictures and place them in <code>CCScrollViews</code> and whatnot.<br/>
+Feel free to contribute or report any bugs.</p>
+
+<p><img class="center" src="/images/posts/fbprofilepic.png" title="Blah" alt="Facebook in Factor Friends"></p>
+
+<hr />
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://srooltheknife.blogspot.ca/2012/05/background-loading-cocos2d-sprite-from.html">Background loading a Cocos2d Sprite from URL</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

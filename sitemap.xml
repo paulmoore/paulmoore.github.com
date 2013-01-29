@@ -1,11 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://paul-moore.ca/blog/2013/01/28/facebook-profile-pictures-in-cocos2d/</loc>
+        <lastmod>2013-01-28T22:35:10-08:00</lastmod>
+    </url>
+    <url>
         <loc>http://paul-moore.ca/blog/archives/</loc>
-        <lastmod>2012-11-19T11:07:24-08:00</lastmod>
+        <lastmod>2013-01-28T22:35:10-08:00</lastmod>
     </url>
     <url>
         <loc>http://paul-moore.ca/</loc>
-        <lastmod>2012-11-19T11:07:24-08:00</lastmod>
+        <lastmod>2013-01-28T22:35:10-08:00</lastmod>
     </url>
 </urlset>

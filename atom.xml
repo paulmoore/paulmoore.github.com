@@ -4,7 +4,7 @@
   <title><![CDATA[Paul's Blog]]></title>
   <link href="http://paul-moore.ca/atom.xml" rel="self"/>
   <link href="http://paul-moore.ca/"/>
-  <updated>2012-11-19T11:16:23-08:00</updated>
+  <updated>2013-01-28T22:45:45-08:00</updated>
   <id>http://paul-moore.ca/</id>
   <author>
     <name><![CDATA[Paul Moore]]></name>
@@ -12,5 +12,227 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Facebook profile pictures in cocos2d]]></title>
+    <link href="http://paul-moore.ca/blog/2013/01/28/facebook-profile-pictures-in-cocos2d/"/>
+    <updated>2013-01-28T19:32:00-08:00</updated>
+    <id>http://paul-moore.ca/blog/2013/01/28/facebook-profile-pictures-in-cocos2d</id>
+    <content type="html"><![CDATA[<h2>Facebook and UIKit</h2>
+
+<p>Somewhere along the line of developing Factor Friends (more on that later) I decided that I wanted, no, <em>needed</em> Facebook integration.<br/>
+Despite whether or not this was a necessary feature was trumped by my desire to play around with social networking APIs.<br/>
+If you haven&#8217;t read through their tutorial yet, I strongly suggest you <a href="https://developers.facebook.%20%20com/docs/tutorials/ios-sdk-tutorial/">start here</a>.</p>
+
+<p>For the most part, integration with the Facebook API and cocos2d is straight forward.<br/>
+The data model is separated from any framework and the view controllers for login are dealt with for you.<br/>
+Where it becomes tricky is when you need to bridge the gap between cocos2d and UIKit, which is what the Facebook API is built on.</p>
+
+<p>The normal way one would construct a profile image from the API is as follows:</p>
+
+<figure class='code'><figcaption><span>Making a profile picture in UIKit</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="c1">// Is the player logged into Facebook?  If so load their Facebook profile pic.</span>
+</span><span class='line'><span class="k">if</span> <span class="p">([</span><span class="n">FBSession</span> <span class="n">activeSession</span><span class="p">].</span><span class="n">isOpen</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[[</span><span class="n">FBRequest</span> <span class="n">requestForMe</span><span class="p">]</span> <span class="nl">startWithCompletionHandler:</span><span class="o">^</span><span class="p">(</span><span class="n">FBRequestConnection</span> <span class="o">*</span><span class="n">connection</span><span class="p">,</span> <span class="n">NSDictionary</span><span class="o">&lt;</span><span class="n">FBGraphUser</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">user</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">FBProfilePictureView</span> <span class="o">*</span><span class="n">pic</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FBProfilePictureView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithProfileID:</span><span class="s">@&quot;my_facebook_id&quot;</span> <span class="nl">pictureCropping:</span><span class="n">FBProfilePictureCroppingSquare</span><span class="p">];</span>
+</span><span class='line'>          <span class="n">CGSize</span> <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCDirector</span> <span class="n">sharedDirector</span><span class="p">].</span><span class="n">winSize</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">CGRect</span> <span class="n">f</span> <span class="o">=</span> <span class="n">pic</span><span class="p">.</span><span class="n">frame</span><span class="p">;</span>
+</span><span class='line'>          <span class="c1">// Center the profile picture in the screen.</span>
+</span><span class='line'>          <span class="n">f</span><span class="p">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">ccp</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">pic</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span>
+</span><span class='line'>          <span class="p">[[</span><span class="n">CCDirector</span> <span class="n">sharedDirector</span><span class="p">].</span><span class="n">view</span> <span class="nl">addSubview:</span><span class="n">pic</span><span class="p">];</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>cocos2d and UIViews</h2>
+
+<p>Cool!  With any luck, we have our Facebook profile picture sitting in the middle of the screen.<br/>
+In some cases, this might be enough.<br/>
+Where it started to break for me was when I needed profile pictures that <em>moved</em> with respect to the rest of my cocos2d scene, and behaved like normal <code>CCSprite</code>s.<br/>
+There are some situations where it is just flat out easier to deal with a <code>CCNode</code> subclass than to manipulate a <code>UIView</code>.<br/>
+In this case, an <code>FBProfilePictureView</code> would not cut it, since I needed access to the underlying data.<br/>
+After attempting to extract the underlying <code>UIImageView</code> and tamper with the CGImage:</p>
+
+<figure class='code'><figcaption><span>Do not attempt</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">FBProfilePictureView</span> <span class="o">*</span><span class="n">pic</span> <span class="o">=</span> <span class="p">...;</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="n">child</span> <span class="k">in</span> <span class="n">pic</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">([</span><span class="n">child</span> <span class="nl">isKindOfClass:</span><span class="p">[</span><span class="n">UIImageView</span> <span class="n">class</span><span class="p">]])</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// ref is nil.</span>
+</span><span class='line'>      <span class="n">CGImageRef</span> <span class="n">ref</span> <span class="o">=</span> <span class="p">((</span><span class="n">UIImageView</span> <span class="o">*</span><span class="p">)</span><span class="n">child</span><span class="p">).</span><span class="n">image</span><span class="p">.</span><span class="n">CGImage</span><span class="p">;</span>
+</span><span class='line'>      <span class="c1">// Will throw an error.</span>
+</span><span class='line'>      <span class="n">CCTexture2D</span> <span class="o">*</span><span class="n">tex</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CCTexture2D</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithCGImage:</span><span class="n">ref</span> <span class="nl">resolutionType:</span><span class="n">kCCResolutioniPhone</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Needless to say, that did not work.<br/>
+Someone who has more experience than me might be able to figure it out, but I conceded defeat.<br/>
+I came to the conclusion that I would probably have to navigate away from the Facebook iOS framework and use their web API directly.</p>
+
+<h2>Facebook Graph API</h2>
+
+<p>Luckily for me, accessing profile pictures directly is rather easy.
+The full documentation for this can be found <a href="https://developers.facebook.com/docs/reference/api/using-pictures/">here</a>.
+To test it out, try navigating to:</p>
+
+<p><strong>https://graph.facebook.com/your_id/picture</strong></p>
+
+<p>where <strong>your_id</strong> is either your Facebook ID or your Facebook &#8216;address&#8217;.
+For instance, you can view this ugly guy here:</p>
+
+<p><a href="https://graph.facebook.com/paul.andrewharrison.moore/picture">https://graph.facebook.com/paul.andrewharrison.moore/picture</a>
+<img class="center" src="https://graph.facebook.com/paul.andrewharrison.moore/picture" title="&#34;Me&#34;" alt="&#34;Me&#34;"></p>
+
+<p>We can also pass parameters to this URL to customize the properties of the image.
+For instance, we can adjust the width and height of the image:</p>
+
+<p><a href="https://graph.facebook.com/paul.andrewharrison.moore/picture?width=60&amp;height=120">https://graph.facebook.com/paul.andrewharrison.moore/picture?width=60&amp;height=120</a><br/>
+<img class="center" src="https://graph.facebook.com/paul.andrewharrison.moore/picture?width=60&height=120" title="&#34;Me&#34;" alt="&#34;Me&#34;"></p>
+
+<p>Read the documentation for a full discussion on what other options are available.</p>
+
+<h2>Downloading remote images</h2>
+
+<p>Anyways, the issue now is how to download this picture and use it as a <code>CCSprite</code>.<br/>
+The general formula looks something like this:</p>
+
+<figure class='code'><figcaption><span>Downloading a remote image in Objective-C</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">NSString</span> <span class="o">*</span><span class="n">facebookId</span> <span class="o">=</span> <span class="p">...;</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="p">...;</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">height</span> <span class="o">=</span> <span class="p">...;</span>
+</span><span class='line'><span class="n">NSString</span> <span class="o">*</span><span class="n">https</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithFormat:</span><span class="s">@&quot;https://graph.facebook.com/%@/picture?width=%i&amp;height=%i&quot;</span><span class="p">,</span> <span class="n">facebookId</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">];</span>
+</span><span class='line'><span class="n">NSURL</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="n">https</span><span class="p">];</span>
+</span><span class='line'><span class="n">NSAssert</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s">@&quot;URL is malformed: %@&quot;</span><span class="p">,</span> <span class="n">https</span><span class="p">);</span>
+</span><span class='line'><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+</span><span class='line'><span class="n">NSData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSData</span> <span class="nl">dataWithContentsOfURL:</span><span class="n">url</span> <span class="nl">options:</span><span class="mi">0</span> <span class="nl">error:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">data</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Download the image to the Cache directory of our App.</span>
+</span><span class='line'>  <span class="n">NSString</span> <span class="o">*</span><span class="n">path</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="n">NSCachesDirectory</span><span class="p">,</span> <span class="n">NSUserDomainMask</span><span class="p">,</span> <span class="n">YES</span><span class="p">)</span> <span class="n">lastObject</span><span class="p">]</span> <span class="nl">stringByAppendingPathComponent:</span><span class="p">[</span><span class="n">facebookId</span> <span class="nl">stringByAppendingString:</span><span class="s">@&quot;.jpg&quot;</span><span class="p">]];</span>
+</span><span class='line'>    <span class="p">[</span><span class="n">data</span> <span class="nl">writeToFile:</span><span class="n">path</span> <span class="nl">options:</span><span class="n">NSDataWritingAtomic</span> <span class="nl">error:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// It worked!</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Error, Could not save downloaded file!</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Error, Could not download file!</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will download our Facebook profile image to the Cache directory as a JPEG file with our Facebook ID as the name.<br/>
+To use this image as a <code>CCSprite</code>, we must first load the image into a <code>CCTexture2D</code> and create a sprite frame, like so:</p>
+
+<figure class='code'><figcaption><span>Using the Cached image as a CCSprite</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="c1">// 1. Load the texture in from the Cache directory.</span>
+</span><span class='line'><span class="n">CCTexture2D</span> <span class="o">*</span><span class="n">texture</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CCTextureCache</span> <span class="n">sharedTextureCache</span><span class="p">]</span> <span class="nl">addImage:</span><span class="n">path</span><span class="p">];</span>
+</span><span class='line'><span class="c1">// 2. Create the sprite frame with appropriate dimensions.</span>
+</span><span class='line'><span class="n">CCSpriteFrame</span> <span class="o">*</span><span class="n">frame</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCSpriteFrame</span> <span class="nl">frameWithTexture:</span><span class="n">texture</span> <span class="nl">rect:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)];</span>
+</span><span class='line'><span class="c1">// 3. Golden.</span>
+</span><span class='line'><span class="p">[</span><span class="n">CCSprite</span> <span class="nl">spriteWithSpriteFrame:</span><span class="n">frame</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You may be thinking, cool, but this is tedious to do each time, and&#8230;</p>
+
+<ol>
+<li>This code runs synchronously, wouldn&#8217;t my App block while waiting for the picture to download?</li>
+<li>If I&#8217;ve downloaded the image once, can&#8217;t I just reload it next time from the cache?</li>
+<li>While the image is downloading, can I display a placeholder image?</li>
+<li>Can this functionality be wrapped in a <code>CCSprite</code> subclass?</li>
+</ol>
+
+
+<p>Yes you can!  I&#8217;ve done so myself, and you can find it in <a href="https://github.com/paulmoore/CCFBProfilePicture">this Github repository</a>.<br/>
+It&#8217;s nothing spectacular, but it certainly gets the job done for my purposes.<br/>
+Here is an example of how to use it:</p>
+
+<figure class='code'><figcaption><span>Using the CCFBProfilePicture class</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">CCFBProfilePicture</span> <span class="o">*</span><span class="n">pic</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCFBProfilePicture</span> <span class="nl">profilePictureWithId:</span><span class="n">fbid</span> <span class="nl">accessToken:</span><span class="n">accessToken</span> <span class="nl">contentSize:</span><span class="n">content</span> <span class="nl">cached:</span><span class="n">useCache</span> <span class="nl">placeholder:</span><span class="n">temp</span><span class="p">];</span>
+</span><span class='line'><span class="p">[</span><span class="n">self</span> <span class="nl">addChild:</span><span class="n">pic</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The class downloads the image in a background thread, so your App will not stall.<br/>
+It also (optionally) attempts to use cached versions of the image before querying Facebook.<br/>
+As well, you can specify a placeholder sprite frame which is displayed while the image is loading.</p>
+
+<p>The constructor requires these parameters:</p>
+
+<ul>
+<li><strong><code>fbid</code></strong> Your Facebook ID, e.g. <em>paul.andrewharrison.moore</em></li>
+<li><strong><code>accessToken</code></strong> (Optional) This is the Facebook access token you received when you signed in through your App.  Providing this argument reduces the chance your App will be rate limited (limit the amount of profile pictures you can access).</li>
+<li><strong><code>content</code></strong> The size, in points, to download the image at.  For instance, if you specify <code>CGSizeMake(100, 100)</code> and you are running on an iPhone 4, it will download an image 200x200 pixels big.  This will also be the <code>contentSize</code> property of the sprite.</li>
+<li><strong><code>useCache</code></strong> If set to YES, will attempt to use a cached version of the image before downloading a new one.  This is a recommended option unless you must always have an up-to-date image, or you need multiple resolutions of the image.</li>
+<li><strong><code>temp</code></strong> (Optional) This is the sprite frame that will be displayed while the image is loading.  It is recommended that it is the same content size as the downloaded image.</li>
+</ul>
+
+
+<p>And that is it!  Now you can run actions on the profile pictures and place them in <code>CCScrollViews</code> and whatnot.<br/>
+Feel free to contribute or report any bugs.</p>
+
+<p><img class="center" src="http://paul-moore.ca/images/posts/fbprofilepic.png" title="Blah" alt="Facebook in Factor Friends"></p>
+
+<hr />
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://srooltheknife.blogspot.ca/2012/05/background-loading-cocos2d-sprite-from.html">Background loading a Cocos2d Sprite from URL</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
 </feed>
