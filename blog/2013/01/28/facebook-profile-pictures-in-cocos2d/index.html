@@ -57,6 +57,7 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
 </ul>
 
 </nav>
@@ -93,8 +94,9 @@
 <div class="entry-content"><h2>Facebook and UIKit</h2>
 
 <p>Somewhere along the line of developing Factor Friends (more on that later) I decided that I wanted, no, <em>needed</em> Facebook integration.<br/>
-Despite whether or not this was a necessary feature was trumped by my desire to play around with social networking APIs.<br/>
-If you haven&#8217;t read through their tutorial yet, I strongly suggest you <a href="https://developers.facebook.%20%20com/docs/tutorials/ios-sdk-tutorial/">start here</a>.</p>
+Despite whether or not this was a necessary feature was trumped by my desire to play around with social networking APIs.</p>
+
+<p>If you haven&#8217;t read through Facebook&#8217;s official tutorial yet, <strong>I strongly suggest you <a href="https://developers.facebook.%20%20com/docs/tutorials/ios-sdk-tutorial/">start here</a>.</strong></p>
 
 <p>For the most part, integration with the Facebook API and cocos2d is straight forward.<br/>
 The data model is separated from any framework and the view controllers for login are dealt with for you.<br/>
@@ -152,7 +154,7 @@ After attempting to extract the underlying <code>UIImageView</code> and tamper w
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">FBProfilePictureView</span> <span class="o">*</span><span class="n">pic</span> <span class="o">=</span> <span class="p">...;</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="n">child</span> <span class="k">in</span> <span class="n">pic</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="n">child</span> <span class="k">in</span> <span class="n">pic</span><span class="p">.</span><span class="n">subviews</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>  <span class="k">if</span> <span class="p">([</span><span class="n">child</span> <span class="nl">isKindOfClass:</span><span class="p">[</span><span class="n">UIImageView</span> <span class="n">class</span><span class="p">]])</span> <span class="p">{</span>
 </span><span class='line'>      <span class="c1">// ref is nil.</span>
 </span><span class='line'>      <span class="n">CGImageRef</span> <span class="n">ref</span> <span class="o">=</span> <span class="p">((</span><span class="n">UIImageView</span> <span class="o">*</span><span class="p">)</span><span class="n">child</span><span class="p">).</span><span class="n">image</span><span class="p">.</span><span class="n">CGImage</span><span class="p">;</span>

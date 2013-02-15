@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | Paul's Blog]]></title>
   <link href="http://paul-moore.ca/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://paul-moore.ca/"/>
-  <updated>2013-01-29T09:44:33-08:00</updated>
+  <updated>2013-02-14T17:40:38-08:00</updated>
   <id>http://paul-moore.ca/</id>
   <author>
     <name><![CDATA[Paul Moore]]></name>
@@ -21,8 +21,9 @@
     <content type="html"><![CDATA[<h2>Facebook and UIKit</h2>
 
 <p>Somewhere along the line of developing Factor Friends (more on that later) I decided that I wanted, no, <em>needed</em> Facebook integration.<br/>
-Despite whether or not this was a necessary feature was trumped by my desire to play around with social networking APIs.<br/>
-If you haven't read through their tutorial yet, I strongly suggest you <a href="https://developers.facebook.%20%20com/docs/tutorials/ios-sdk-tutorial/">start here</a>.</p>
+Despite whether or not this was a necessary feature was trumped by my desire to play around with social networking APIs.</p>
+
+<p>If you haven't read through Facebook's official tutorial yet, <strong>I strongly suggest you <a href="https://developers.facebook.%20%20com/docs/tutorials/ios-sdk-tutorial/">start here</a>.</strong></p>
 
 <p>For the most part, integration with the Facebook API and cocos2d is straight forward.<br/>
 The data model is separated from any framework and the view controllers for login are dealt with for you.<br/>
@@ -61,7 +62,7 @@ After attempting to extract the underlying <code>UIImageView</code> and tamper w
 
 <p>```objective-c Do not attempt
 FBProfilePictureView *pic = ...;
-for (id child in pic) {</p>
+for (id child in pic.subviews) {</p>
 
 <pre><code>if ([child isKindOfClass:[UIImageView class]]) {
     // ref is nil.
