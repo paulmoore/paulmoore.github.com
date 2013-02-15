@@ -1,7 +1,34 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
 
-header[role="banner"] {
-  //background-image: url(/images/test.jpg);
-  background-repeat: no-repeat;
+//header[role="banner"] {
+ // background-image: url(/images/header.png);
+ // background-repeat: no-repeat;
+//}
+
+body > header h1 {
+	padding-left: 5em;         
+	text-align: left;
+}
+
+body > header h2 {
+	padding-left: 8em;
+	text-align: left;
+}
+
+body > header h1:before {
+	content: "";
+	position: absolute;
+	height: 166px;
+	width: 256px;
+	overflow: hidden;
+	text-align: right;
+	background-image: url('/images/header.png');
+	background-repeat: no-repeat;
+	@media only screen and (min-width: 432px) {
+		top: .32em;
+	}
+	@media only screen and (min-width: 768px) {
+		left: .75em;
+	}
 }

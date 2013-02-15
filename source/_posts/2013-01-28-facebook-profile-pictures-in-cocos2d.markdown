@@ -9,8 +9,9 @@ categories: [iOS, Mobile, cocos2d, Facebook, Objective-C]
 ## Facebook and UIKit
 
 Somewhere along the line of developing Factor Friends (more on that later) I decided that I wanted, no, _needed_ Facebook integration.  
-Despite whether or not this was a necessary feature was trumped by my desire to play around with social networking APIs.  
-If you haven't read through their tutorial yet, I strongly suggest you [start here](https://developers.facebook.  com/docs/tutorials/ios-sdk-tutorial/).
+Despite whether or not this was a necessary feature was trumped by my desire to play around with social networking APIs. 
+
+If you haven't read through Facebook's official tutorial yet, __I strongly suggest you [start here](https://developers.facebook.  com/docs/tutorials/ios-sdk-tutorial/).__  
 
 For the most part, integration with the Facebook API and cocos2d is straight forward.  
 The data model is separated from any framework and the view controllers for login are dealt with for you.  
@@ -46,7 +47,7 @@ After attempting to extract the underlying `UIImageView` and tamper with the CGI
 
 ```objective-c Do not attempt
 FBProfilePictureView *pic = ...;
-for (id child in pic) {
+for (id child in pic.subviews) {
 	if ([child isKindOfClass:[UIImageView class]]) {
 		// ref is nil.
 		CGImageRef ref = ((UIImageView *)child).image.CGImage;
