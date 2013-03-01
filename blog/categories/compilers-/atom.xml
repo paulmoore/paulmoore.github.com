@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Compilers, | Paul's Blog]]></title>
+  <link href="http://paul-moore.ca/blog/categories/compilers-/atom.xml" rel="self"/>
+  <link href="http://paul-moore.ca/"/>
+  <updated>2013-03-01T12:09:49-08:00</updated>
+  <id>http://paul-moore.ca/</id>
+  <author>
+    <name><![CDATA[Paul Moore]]></name>
+    <email><![CDATA[paul.andrewharrison.moore@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[/* waste space */]]></title>
+    <link href="http://paul-moore.ca/blog/2013/03/01/slash-star-waste-space-star-slash/"/>
+    <updated>2013-03-01T11:52:00-08:00</updated>
+    <id>http://paul-moore.ca/blog/2013/03/01/slash-star-waste-space-star-slash</id>
+    <content type="html"><![CDATA[<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>At least it is documented  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">waste</span><span class="p">()</span>     <span class="o">/&lt;</span><span class="n">em</span><span class="o">&gt;</span> <span class="n">waste</span> <span class="n">space</span> <span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;/</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I saw this earlier today while browsing through <a href="http://cm.bell-labs.com/cm/cs/who/dmr/primevalC.html">one of the earliest recovered C compilers</a>.  We're talking prestruct, prepreprocessor madness.  And, apparently, built by <a href="http://en.wikipedia.org/wiki/Dennis_Ritchie">the man</a> himself.</p>
+
+<p>Modern compilers won't compile it, however.  I hope that someone, someday will make that happen.  As for me though, I can't stop <strong>wat</strong>ing.</p>
+
+<p>You can peruse the source <a href="https://github.com/mortdeus/legacy-cc">here</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

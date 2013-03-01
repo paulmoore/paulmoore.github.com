@@ -4,14 +4,55 @@
   <title><![CDATA[Paul's Blog]]></title>
   <link href="http://paul-moore.ca/atom.xml" rel="self"/>
   <link href="http://paul-moore.ca/"/>
-  <updated>2013-02-14T23:35:45-08:00</updated>
+  <updated>2013-03-01T12:09:49-08:00</updated>
   <id>http://paul-moore.ca/</id>
   <author>
     <name><![CDATA[Paul Moore]]></name>
-    
+    <email><![CDATA[paul.andrewharrison.moore@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[/* waste space */]]></title>
+    <link href="http://paul-moore.ca/blog/2013/03/01/slash-star-waste-space-star-slash/"/>
+    <updated>2013-03-01T11:52:00-08:00</updated>
+    <id>http://paul-moore.ca/blog/2013/03/01/slash-star-waste-space-star-slash</id>
+    <content type="html"><![CDATA[
+
+<figure class='code'><figcaption><span>At least it is documented  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">waste</span><span class="p">()</span>       <span class="cm">/* waste space */</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'>  <span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'>  <span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'>  <span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'>  <span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'>  <span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'>  <span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'>  <span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">),</span><span class="n">waste</span><span class="p">(</span><span class="n">waste</span><span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I saw this earlier today while browsing through <a href="http://cm.bell-labs.com/cm/cs/who/dmr/primevalC.html">one of the earliest recovered C compilers</a>.  We&#8217;re talking prestruct, prepreprocessor madness.  And, apparently, built by <a href="http://en.wikipedia.org/wiki/Dennis_Ritchie">the man</a> himself.</p>
+
+<p>Modern compilers won&#8217;t compile it, however.  I hope that someone, someday will make that happen.  As for me though, I can&#8217;t stop <strong>wat</strong>ing.</p>
+
+<p>You can peruse the source <a href="https://github.com/mortdeus/legacy-cc">here</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Facebook profile pictures in cocos2d]]></title>
