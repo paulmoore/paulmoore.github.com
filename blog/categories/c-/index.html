@@ -135,7 +135,7 @@
         github.showRepos({
             user: 'paulmoore',
             count: 10,
-            skip_forks: false,
+            skip_forks: true,
             target: '#gh_repos'
         });
     });
@@ -164,7 +164,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Paul Moore -
+  Copyright &copy; 2013 - Paul Moore <a href="mailto:paul@paul-moore.ca">paul@paul-moore.ca</a> -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -185,6 +185,15 @@
 </script>
 
 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 
