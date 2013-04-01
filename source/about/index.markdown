@@ -12,4 +12,4 @@ I spend my free time programming and skiing, but rarely both at the same time.
 
 I enjoy learning about and experimenting with new technologies and languages - especially those related to video games. Right now I have a fascination with mobile platforms.
 
-Feel free to connect with me on [LinkedIn](http://ca.linkedin.com/pub/paul-moore/20/50/68b/)
+Feel free to <a href="mailto:paul@paul-moore.ca">email</a> or connect with me on [LinkedIn](http://ca.linkedin.com/pub/paul-moore/20/50/68b/).
